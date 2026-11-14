@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension version="4.0" type="plugin" group="vmpayment" method="upgrade">
+    <name>VM Payment - ArionPay</name>
+    <creationDate>November 2026</creationDate>
+    <author>ArionPay</author>
+    <authorUrl>https://arionpay.com</authorUrl>
+    <license>MIT</license>
+    <version>1.0.0</version>
+    <description>PLG_VMPAYMENT_ARIONPAY_XML_DESCRIPTION</description>
+
+    <files>
+        <filename plugin="arionpay">arionpay.php</filename>
+        <folder>language</folder>
+        <folder>lib</folder>
+        <filename>LICENSE</filename>
+    </files>
+    <languages folder="language">
+        <language tag="en-GB">en-GB/en-GB.plg_vmpayment_arionpay.ini</language>
+        <language tag="en-GB">en-GB/en-GB.plg_vmpayment_arionpay.sys.ini</language>
+    </languages>
+
+    <vmconfig>
+        <fields name="params">
+            <fieldset name="arionpay" addfieldpath="/administrator/components/com_virtuemart/fields">
+                <field name="checkConditionsCore" value="1" default="1" type="hidden"/>
+                <field name="api_key" type="text" size="60" default="" label="VMPAYMENT_ARIONPAY_API_KEY" description="VMPAYMENT_ARIONPAY_API_KEY_TIP"/>
+                <field name="api_secret" type="password" size="60" default="" label="VMPAYMENT_ARIONPAY_API_SECRET" description="VMPAYMENT_ARIONPAY_API_SECRET_TIP"/>
+                <field name="webhook_secret" type="password" size="60" default="" label="VMPAYMENT_ARIONPAY_WEBHOOK_SECRET" description="VMPAYMENT_ARIONPAY_WEBHOOK_SECRET_TIP"/>
+                <field name="test_mode" type="radio" default="1" label="VMPAYMENT_ARIONPAY_TEST_MODE" description="VMPAYMENT_ARIONPAY_TEST_MODE_TIP">
+                    <option value="0">COM_VIRTUEMART_NO</option>
+                    <option value="1">COM_VIRTUEMART_YES</option>
+                </field>
+                <field name="base_url" type="text" size="60" default="" label="VMPAYMENT_ARIONPAY_BASE_URL" description="VMPAYMENT_ARIONPAY_BASE_URL_TIP"/>
+                <field name="payment_currency" type="vmacceptedcurrency" default="" label="VMPAYMENT_ARIONPAY_CURRENCY" description="VMPAYMENT_ARIONPAY_CURRENCY_TIP"/>
+                <field name="status_pending" type="vmorderstate" scope="com_virtuemart" default="P" label="VMPAYMENT_ARIONPAY_STATUS_PENDING" description="VMPAYMENT_ARIONPAY_STATUS_PENDING_TIP"/>
+                <field name="status_success" type="vmorderstate" scope="com_virtuemart" default="C" label="VMPAYMENT_ARIONPAY_STATUS_SUCCESS" description="VMPAYMENT_ARIONPAY_STATUS_SUCCESS_TIP"/>
+            </fieldset>
+            <fieldset name="template">
+                <field name="payment_logos" type="vmfiles" multiple="true" directory="/images/virtuemart/payment" hide_none="1" label="VMPAYMENT_ARIONPAY_LOGOS" size="40" description="VMPAYMENT_ARIONPAY_LOGOS_TIP"/>
+                <field name="payment_info" type="textarea" cols="35" rows="5" label="VMPAYMENT_ARIONPAY_PAYMENTINFO" description="VMPAYMENT_ARIONPAY_PAYMENTINFO_TIP"/>
+            </fieldset>
+            <fieldset name="restrictions">
+                <field name="countries" multiple="true" type="vmcountries" scope="com_virtuemart" default="" label="VMPAYMENT_ARIONPAY_COUNTRIES" description="VMPAYMENT_ARIONPAY_COUNTRIES_TIP"/>
+                <field name="min_amount" type="text" label="VMPAYMENT_ARIONPAY_MIN_AMOUNT" description="VMPAYMENT_ARIONPAY_MIN_AMOUNT_TIP"/>
+                <field name="max_amount" type="text" label="VMPAYMENT_ARIONPAY_MAX_AMOUNT" description="VMPAYMENT_ARIONPAY_MAX_AMOUNT_TIP"/>
+            </fieldset>
+            <fieldset name="fee">
+                <field name="cost_per_transaction" type="text" label="VMPAYMENT_ARIONPAY_COST_PER_TRANSACTION" description="VMPAYMENT_ARIONPAY_COST_PER_TRANSACTION_TIP"/>
+                <field name="cost_min_transaction" type="text" label="VMPAYMENT_ARIONPAY_COST_MIN_TRANSACTION" description="VMPAYMENT_ARIONPAY_COST_MIN_TRANSACTION_TIP"/>
+                <field name="cost_percent_total" type="text" label="VMPAYMENT_ARIONPAY_COST_PERCENT_TOTAL" description="VMPAYMENT_ARIONPAY_COST_PERCENT_TOTAL_TIP"/>
+                <field name="tax_id" type="vmtaxes" scope="com_virtuemart" label="VMPAYMENT_ARIONPAY_TAX" description="VMPAYMENT_ARIONPAY_TAX_TIP"/>
+            </fieldset>
+        </fields>
+    </vmconfig>
+</extension>
